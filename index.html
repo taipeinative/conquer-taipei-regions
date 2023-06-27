@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+
+    <meta charset="utf-8" />
+
+    <!-- Title -->
+    <title id="title">制北北基365分區等級地圖</title>
+
+    <!-- Meta -->
+    <meta name="author" content="@TaipeiNative on GitHub" />
+    <meta name="description" content="Color the places you have gone to and share with your friends!" />
+    <meta name="keywords" content="taipei native github conquer 365 regions 制霸 北北基 大臺北 分區" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Icon Link -->
+    <!-- Credits go to very helpful site https://realfavicongenerator.net/ ^_^ -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest" crossorigin="use-credentials">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+
+    <!-- Icon Meta -->
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Style Link -->
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+    <!-- Script -->
+    <script type="text/javascript" src="script/script.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script type="text/javascript" src="https://unpkg.com/leaflet.vectorgrid@latest/dist/Leaflet.VectorGrid.bundled.js"></script>
+
+</head>
+<body class="zh-TW">
+
+    <!-- Header & Navbar -->
+    <nav>
+        <h1 id="header">制北北基365分區等級地圖</h1>
+        <a id="theme" class="img-theme nav-button" href="#" title="更換主題色"></a>
+        <a id="lang" class="img-lang nav-button" href="#" title="更換語言"></a>
+        <a id="info" class="img-info nav-button on" href="#" title="說明頁面"></a>
+        <a id="save" class="img-save nav-button" href="#" title="儲存圖片"></a>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <aside class="info">
+
+            <!-- Language Tab -->
+            <section id="lang-tab" class="tab">
+                <a id="lang-tab-remove" class="remove" href="#" title="關閉分頁">🞪</a>
+                <ul>
+                    <li><a id="lang-tab-zh-TW" class="lang-button zh-TW" href="#" title="正體中文（正體中文）">正體中文</a></li>
+                    <li><a id="lang-tab-zh-CN" class="lang-button zh-CN" href="#" title="简体中文（簡體中文）">简体中文</a></li>
+                    <li><a id="lang-tab-en" class="lang-button en" href="#" title="English（英文）">English</a></li>
+                </ul>
+            </section>
+
+            <!-- Info Tab -->
+            <section id="info-tab" class="tab visible">
+                <a id="info-tab-remove" class="remove" href="#" title="關閉分頁">🞪</a>
+                <p id="info-tab-paragraph">
+                    <strong id="info-tab-1st-strong">「制○○等級」是什麼？</strong>
+                    <span id="info-tab-1st-part">一個你可以拿來記錄去過哪裡的工具，靈感來自</span><!--
+                 --><a id="info-tab-external-1" class="external" href="https://github.com/mb10001114/townTaiwan" target="_blank" rel="noopener noreferrer">制鄉鎮地圖臺灣版</a><!--
+                 --><span id="info-tab-2nd-part">。</span>
+                    <strong id="info-tab-2nd-strong">「365分區」是什麼？</strong>
+                    <span id="info-tab-3rd-part">由我隨興定義的區劃層級，介於鄉鎮市區和村里之間，大致上與</span><!--
+                 --><a id="info-tab-external-2" class="external" href="https://zh.wikipedia.org/zh-tw/臺北市次分區列表" target="_blank" rel="noopener noreferrer">次分區</a><!--
+                 --><span>的概念差不多。使用分區的理由是村里太瑣碎，同時有些區太大以致於擦到邊邊就算完成；分區則是盡量將同個生活圈的區域匯集在一起，比較有代表性。</span>
+                    <strong id="info-tab-3rd-strong">這應該如何操作？</strong>
+                    <span id="info-tab-4th-part">你可以在地圖上點選分區或搜尋分區名稱，並在選單選擇該分區狀態為何；建議在寬螢幕上操作體驗較佳。</span>
+                </p>
+            </section>
+
+            <!-- Search Box -->
+            <section id="search" class="search">
+                <strong id="search-tab-1st-strong">搜尋分區</strong>
+                <input type="search" incremental list="search-result" name="q" title="搜尋分區" />
+                <datalist id="search-result"></datalist>
+            </section>
+
+            <!-- Status Box -->
+            <section id="status" class="status">
+                <strong id="status-tab-1st-strong" class="inline">現在選擇：</strong><!--
+             --><span id="status-tab-1st-part" class="status-tab-selection">臺北市信義區興雅</span>
+                <div id="status-tab-buttons" class="status-tab">
+                    <input type="radio" name="status" title="未去過" value="0" /><span id="status-0">未去過</span>
+                    <input type="radio" name="status" title="經過" value="1" /><span id="status-1">經過</span>
+                    <input type="radio" name="status" title="休息" value="2" /><span id="status-2">休息</span>
+                    <input type="radio" name="status" title="遊覽" value="3" /><span id="status-3">遊覽</span>
+                    <input type="radio" name="status" title="住宿" value="4" /><span id="status-4">住宿</span>
+                    <input type="radio" name="status" title="居住" value="5" /><span id="status-5">居住</span>
+                </div>
+            </section>
+        </aside>
+        <div id="map" class="map"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p id="footer"></p>
+    </footer>
+
+</body>
+</html>
