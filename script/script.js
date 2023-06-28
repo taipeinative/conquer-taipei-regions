@@ -1,13 +1,51 @@
 var dayTheme = true;
+var lang = 'zh-TW';
+var locale;
 
 window.onload = e => {
 
+    fetchGeometry();
+    fetchLocale();
     removeTab();
     setMap();
+    toggleLanguage();
     toggleTab();
     toggleTheme();
 
 };
+
+function fetchGeometry() {
+
+    return;
+
+}
+
+/**
+ * Fetch `locale.json`. In order to bypass CORS policy when testing,
+ *  use bash command `$ python -m http.server` to create a http enviroment.
+ *  Then visit `localhost:8000` to see how it works in real time.
+ */
+function fetchLocale() {
+
+    fetch('../locale.json')
+
+        .then(res => {
+
+            return res.json();
+
+        })
+        .then(data => {
+            
+            updateLanguage(data)
+            locale = data;
+
+        })
+        .catch(err => {
+
+            console.log(err);
+
+        })
+}
 
 /**
  * Remove language and information tabs.
@@ -36,33 +74,39 @@ function removeTab() {
 
 function setMap() {
 
-    var vectorStyle = {
-
-        water: {
-
-            color: '#0CC',
-            fill: true,
-            fillColor: '#0CC',
-            fillOpacity: 0.2,
-            opacity: 0.4,
-            weight: 1,
-
-        }
-    };
-
     const osmURL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
-    const osmAttribution = '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
-    const osmLayer = L.tileLayer(osmURL, {maxZoom: 18, attribution: osmAttribution});
-
-    const omtURL = "https://api.maptiler.com/tiles/v3-openmaptiles/{z}/{x}/{y}.pbf?key={key}";
-    const omtAttribution = '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, © MapTiler';
-    const omtKey = 'gXAfGuwbRueOGQvJ5wEm';
-    const omtLayer = L.vectorGrid.protobuf(omtURL, {attribution: omtAttribution, key: omtKey, vectorTileLayerStyles: vectorStyle});
+    const osmAttribution = '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+    const osmLayer = L.tileLayer(osmURL, {attribution: osmAttribution, maxZoom: 18});
 
     const map = leaflet.map('map').setView([25.05, 121.55], 12);
     osmLayer.addTo(map);
-    // omtLayer.addTo(map);
 
+}
+
+
+/**
+ * Toggle languages.
+ */
+function toggleLanguage() {
+
+    const buttons = document.querySelectorAll('.lang-button');
+
+    buttons.forEach(item => {
+
+        item.addEventListener('click', e => {
+
+            var targetLang = item.id.match(/(?<=lang-tab-).+/)[0];
+
+            document.getElementsByTagName('html')[0].lang = targetLang;
+            document.getElementsByTagName('body')[0].classList.remove(lang);
+            document.getElementsByTagName('body')[0].classList.add(targetLang);
+            lang = targetLang;
+            updateLanguage(locale);
+
+            e.preventDefault();
+
+        });
+    });
 }
 
 /**
@@ -86,7 +130,6 @@ function toggleTab() {
                     classSet.add(classItem);
 
                 });
-
             })
 
             if (item.classList.contains('on')) {
@@ -146,4 +189,18 @@ function toggleTheme() {
         e.preventDefault();
 
     });
+}
+
+/**
+ * Update the laguage of the page.
+ * @param {Array} source The JSON array indicating the local translation of the page.
+ */
+function updateLanguage(source) {
+
+    source.forEach(item => {
+
+        var element = document.getElementById(item['id']);
+        element[item['property']] = item[lang];
+
+    })
 }
