@@ -1,0 +1,290 @@
+[
+    {
+        "uid": 0,
+        "id": "title",
+        "property": "innerHTML",
+        "zh-TW": "制北北基365分區等級地圖",
+        "zh-CN": "制北北基365分区等级地图",
+        "en": "Greater Taipei 365 Regions Conquering Progress Map"
+    },
+    {
+        "uid": 1,
+        "id": "header",
+        "property": "innerHTML",
+        "zh-TW": "制北北基365分區等級地圖",
+        "zh-CN": "制北北基365分区等级地图",
+        "en": "Greater Taipei 365 Regions Conquering Progress Map"
+    },
+    {
+        "uid": 2,
+        "id": "theme",
+        "property": "title",
+        "zh-TW": "更換主題色",
+        "zh-CN": "更改主题色",
+        "en": "Change theme color"
+    },
+    {
+        "uid": 3,
+        "id": "lang",
+        "property": "title",
+        "zh-TW": "更換語言",
+        "zh-CN": "更改语言",
+        "en": "Change language"
+    },
+    {
+        "uid": 4,
+        "id": "info",
+        "property": "title",
+        "zh-TW": "說明頁面",
+        "zh-CN": "信息页面",
+        "en": "Info page"
+    },
+    {
+        "uid": 5,
+        "id": "save",
+        "property": "title",
+        "zh-TW": "儲存圖片",
+        "zh-CN": "保存图像",
+        "en": "Save image"
+    },
+    {
+        "uid": 6,
+        "id": "lang-tab-remove",
+        "property": "title",
+        "zh-TW": "關閉分頁",
+        "zh-CN": "关闭选项卡",
+        "en": "Close tab"
+    },
+    {
+        "uid": 7,
+        "id": "lang-tab-zh-TW",
+        "property": "title",
+        "zh-TW": "正體中文（正體中文）",
+        "zh-CN": "正體中文（正体中文）",
+        "en": "正體中文 (Traditional Chinese)"
+    },
+    {
+        "uid": 8,
+        "id": "lang-tab-zh-CN",
+        "property": "title",
+        "zh-TW": "简体中文（簡體中文）",
+        "zh-CN": "简体中文（简体中文）",
+        "en": "简体中文 (Simplified Chinese)"
+    },
+    {
+        "uid": 9,
+        "id": "lang-tab-en",
+        "property": "title",
+        "zh-TW": "English（英文）",
+        "zh-CN": "English（英文）",
+        "en": "English (English)"
+    },
+    {
+        "uid": 10,
+        "id": "info-tab-remove",
+        "property": "title",
+        "zh-TW": "關閉分頁",
+        "zh-CN": "关闭选项卡",
+        "en": "Close tab"
+    },
+    {
+        "uid": 11,
+        "id": "info-tab-1st-strong",
+        "property": "innerHTML",
+        "zh-TW": "「制○○等級」是什麼？",
+        "zh-CN": "什么是“制○○等级”？",
+        "en": "What is “conquering progress”?"
+    },
+    {
+        "uid": 12,
+        "id": "info-tab-1st-part",
+        "property": "innerHTML",
+        "zh-TW": "一個你可以拿來記錄去過哪裡的工具，靈感來自",
+        "zh-CN": "一个你可以拿来记录去过哪里的工具，灵感来自",
+        "en": "A tool to record where you have been to, inspired from "
+    },
+    {
+        "uid": 13,
+        "id": "info-tab-external-1",
+        "property": "innerHTML",
+        "zh-TW": "制鄉鎮地圖臺灣版",
+        "zh-CN": "制乡镇地图台湾版",
+        "en": "Taiwan Travel Level"
+    },
+    {
+        "uid": 14,
+        "id": "info-tab-2nd-part",
+        "property": "innerHTML",
+        "zh-TW": "。",
+        "zh-CN": "。",
+        "en": "."
+    },
+    {
+        "uid": 15,
+        "id": "info-tab-2nd-strong",
+        "property": "innerHTML",
+        "zh-TW": "「365分區」是什麼？",
+        "zh-CN": "什么是“365分区”？",
+        "en": "What are “365 regions”?"
+    },
+    {
+        "uid": 16,
+        "id": "info-tab-3rd-part",
+        "property": "innerHTML",
+        "zh-TW": "由我隨興命名的區劃層級，介於鄉鎮市區和村里之間，大致上與",
+        "zh-CN": "由我随兴命名的区划层级，介于乡镇市区和村里之间，大致上与",
+        "en": "The unofficial division level named by me, whose level lies between townships and villages, is roughly the same as "
+    },
+    {
+        "uid": 17,
+        "id": "info-tab-external-2",
+        "property": "innerHTML",
+        "zh-TW": "次分區",
+        "zh-CN": "次分区",
+        "en": "subdivision"
+    },
+    {
+        "uid": 18,
+        "id": "info-tab-4th-part",
+        "property": "innerHTML",
+        "zh-TW": "的概念差不多。使用分區的理由是村里太瑣碎，同時有些區太大以致於擦到邊邊就算完成；分區則是盡量將同個生活圈的區域匯集在一起，比較有代表性。",
+        "zh-CN": "的概念差不多。使用分区的理由是村里太琐碎，同时有些区太大以致于碰到边界就算完成；分区则是尽量将同个生活圈的区域汇集在一起，比较有代表性。",
+        "en": ". The reason for using regions is that villages are too fragmented while townships are too easy to complete in such scale; a region tries gathering villages sharing the same community to keep the balance."
+    },
+    {
+        "uid": 19,
+        "id": "info-tab-3rd-strong",
+        "property": "innerHTML",
+        "zh-TW": "這應該如何操作？",
+        "zh-CN": "这应该如何操作？",
+        "en": "How to use the website?"
+    },
+    {
+        "uid": 20,
+        "id": "info-tab-5th-part",
+        "property": "innerHTML",
+        "zh-TW": "你可以在地圖上點選分區或搜尋分區名稱，並在選單選擇該分區狀態為何；建議在寬螢幕上操作體驗較佳。",
+        "zh-CN": "你可以在地图上点击分区或搜索分区名称，并在菜单选择该分区状态为何；建议在宽屏上操作体验较佳。",
+        "en": "By clicking the regions on the map or searching the name of the regions, you can configurate the status of each region in the right panel. It is recommended to use the site with a wide monitor."
+    },
+    {
+        "uid": 21,
+        "id": "search-tab-1st-strong",
+        "property": "innerHTML",
+        "zh-TW": "搜尋分區",
+        "zh-CN": "搜索分区（正体中文）",
+        "en": "Search regions (Trad. Chinese)"
+    },
+    {
+        "uid": 22,
+        "id": "search-bar",
+        "property": "title",
+        "zh-TW": "搜尋分區",
+        "zh-CN": "搜索分区",
+        "en": "Search regions"
+    },
+    {
+        "uid": 23,
+        "id": "status-tab-1st-strong",
+        "property": "innerHTML",
+        "zh-TW": "現在選擇：",
+        "zh-CN": "现在选择：",
+        "en": "Now selecting: "
+    },
+    {
+        "uid": 24,
+        "id": "status-input-0",
+        "property": "title",
+        "zh-TW": "未去過",
+        "zh-CN": "未去过",
+        "en": "Unvisited"
+    },
+    {
+        "uid": 25,
+        "id": "status-0",
+        "property": "innerHTML",
+        "zh-TW": "未去過",
+        "zh-CN": "未去过",
+        "en": "Unvisited"
+    },
+    {
+        "uid": 26,
+        "id": "status-input-1",
+        "property": "title",
+        "zh-TW": "經過：路過但未停留",
+        "zh-CN": "经过：路过但未停留",
+        "en": "Passed: passed by but not stop"
+    },
+    {
+        "uid": 27,
+        "id": "status-1",
+        "property": "innerHTML",
+        "zh-TW": "經過",
+        "zh-CN": "经过",
+        "en": "Passed"
+    },
+    {
+        "uid": 28,
+        "id": "status-input-2",
+        "property": "title",
+        "zh-TW": "休息：用餐、加油等短時間停留",
+        "zh-CN": "休息：用餐、加油等短时间停留",
+        "en": "Rested: stoped shortly for meals, refueling, etc."
+    },
+    {
+        "uid": 29,
+        "id": "status-2",
+        "property": "innerHTML",
+        "zh-TW": "休息",
+        "zh-CN": "休息",
+        "en": "Rested"
+    },
+    {
+        "uid": 30,
+        "id": "status-input-3",
+        "property": "title",
+        "zh-TW": "遊覽：未過夜的較長時間停留",
+        "zh-CN": "游览：未过夜的较长时间停留",
+        "en": "Visited: stoped longer but without staying overnight"
+    },
+    {
+        "uid": 31,
+        "id": "status-3",
+        "property": "innerHTML",
+        "zh-TW": "遊覽",
+        "zh-CN": "游览",
+        "en": "Visited"
+    },
+    {
+        "uid": 32,
+        "id": "status-input-4",
+        "property": "title",
+        "zh-TW": "住宿",
+        "zh-CN": "住宿",
+        "en": "Overnight"
+    },
+    {
+        "uid": 33,
+        "id": "status-4",
+        "property": "innerHTML",
+        "zh-TW": "住宿",
+        "zh-CN": "住宿",
+        "en": "Overnight"
+    },
+    {
+        "uid": 34,
+        "id": "status-input-5",
+        "property": "title",
+        "zh-TW": "居住",
+        "zh-CN": "居住",
+        "en": "Lived"
+    },
+    {
+        "uid": 35,
+        "id": "status-5",
+        "property": "innerHTML",
+        "zh-TW": "居住",
+        "zh-CN": "居住",
+        "en": "Lived"
+    }
+]
