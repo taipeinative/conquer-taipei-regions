@@ -7,7 +7,6 @@ window.onload = e => {
     fetchGeometry();
     fetchLocale();
     removeTab();
-    setMap();
     toggleLanguage();
     toggleTab();
     toggleTheme();
@@ -16,12 +15,28 @@ window.onload = e => {
 
 function fetchGeometry() {
 
-    return;
+    fetch('geometry/regions.geojson')
+
+        .then(res => {
+
+            return res.json();
+
+        })
+        .then(data => {
+
+            setMap(data);
+
+        })
+        .catch(err => {
+
+            console.log(err);
+
+        })
 
 }
 
 /**
- * Fetch `locale.json`. In order to bypass CORS policy when testing,
+ * Fetch `locale.json`. In order to bypass CORS policy when testing locally,
  *  use bash command `$ python -m http.server` to create a http enviroment.
  *  Then visit `localhost:8000` to see how it works in real time.
  */
@@ -72,7 +87,7 @@ function removeTab() {
     }
 }
 
-function setMap() {
+function setMap(region) {
 
     const osmURL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
     const osmAttribution = '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
@@ -81,8 +96,110 @@ function setMap() {
     const map = leaflet.map('map').setView([25.05, 121.55], 12);
     osmLayer.addTo(map);
 
-}
+    var clicked;
+    var regLayer;
 
+    /**
+     * The event listener for user events.
+     * @param {*} feature 
+     * @param {*} layer 
+     */
+    function lfEventListener(feature, layer) {
+
+        layer.on({
+
+            click: lfEventClick,
+            mouseover: lfEventOn,
+            mouseout: lfEventOut
+
+        });
+
+    }
+
+    /**
+     * The actions which fire after the user click on the feature.
+     */
+    function lfEventClick(e) {
+
+        var feature = e.target;
+        var sel;
+
+        clicked = feature;
+        regLayer.resetStyle();
+
+        feature.setStyle({
+
+            color: '#16E',
+            weight: 3
+
+        });
+
+        feature.bringToFront();
+
+        sel = document.getElementById('status-tab-1st-part');
+        sel.innerHTML = feature.feature.properties.fullName;
+
+    }
+
+    /**
+     * The actions which fire after the mouse hover the feature.
+     * @param {*} e The event.
+     */
+    function lfEventOn(e) {
+
+        var feature = e.target;
+
+        if (clicked != feature) {
+
+            feature.setStyle({
+
+                color: '#222',
+                weight: 3
+
+            });
+
+            feature.bringToFront();
+            
+            if (clicked != null) {
+
+                clicked.bringToFront();
+
+            }
+        }
+    }
+
+    /**
+     * The actions which fire after the mouse hover out the feature.
+     * @param {*} e The event.
+     */
+       function lfEventOut(e) {
+        
+        if (clicked != e.target) {
+
+            regLayer.resetStyle(e.target);
+
+        }
+
+    }
+    /**
+    * Define polygons' style.
+    */
+    function lfStyleGeneric() {
+
+        return {
+
+            fillColor: '#FFF',
+            fillOpacity: 0.5,
+            color: '#888',
+            weight: 1
+
+        }
+
+    }
+
+    regLayer = L.geoJson(region, {style: lfStyleGeneric, onEachFeature: lfEventListener}).addTo(map);
+
+}
 
 /**
  * Toggle languages.
