@@ -27,7 +27,7 @@ function fetchGeometry() {
  */
 function fetchLocale() {
 
-    fetch('../locale.json')
+    fetch('src/locale.json')
 
         .then(res => {
 

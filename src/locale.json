@@ -108,8 +108,8 @@
         "id": "info-tab-external-1",
         "property": "innerHTML",
         "zh-TW": "制鄉鎮地圖臺灣版",
-        "zh-CN": "制鄉鎮地圖臺灣版",
-        "en": "制鄉鎮地圖臺灣版"
+        "zh-CN": "制乡镇地图台湾版",
+        "en": "Taiwan Travel Level"
     },
     {
         "uid": 14,
@@ -197,7 +197,7 @@
         "property": "title",
         "zh-TW": "未去過",
         "zh-CN": "未去过",
-        "en": "Never been to"
+        "en": "Unvisited"
     },
     {
         "uid": 25,
@@ -205,15 +205,15 @@
         "property": "innerHTML",
         "zh-TW": "未去過",
         "zh-CN": "未去过",
-        "en": "Never been to"
+        "en": "Unvisited"
     },
     {
         "uid": 26,
         "id": "status-input-1",
         "property": "title",
-        "zh-TW": "經過",
-        "zh-CN": "经过",
-        "en": "Passing through"
+        "zh-TW": "經過：路過但未停留",
+        "zh-CN": "经过：路过但未停留",
+        "en": "Passed: passed by but not stop"
     },
     {
         "uid": 27,
@@ -221,15 +221,15 @@
         "property": "innerHTML",
         "zh-TW": "經過",
         "zh-CN": "经过",
-        "en": "Passing through"
+        "en": "Passed"
     },
     {
         "uid": 28,
         "id": "status-input-2",
         "property": "title",
-        "zh-TW": "休息",
-        "zh-CN": "休息",
-        "en": "Stoping for resting"
+        "zh-TW": "休息：用餐、加油等短時間停留",
+        "zh-CN": "休息：用餐、加油等短时间停留",
+        "en": "Rested: stoped shortly for meals, refueling, etc."
     },
     {
         "uid": 29,
@@ -237,15 +237,15 @@
         "property": "innerHTML",
         "zh-TW": "休息",
         "zh-CN": "休息",
-        "en": "Stoping for resting"
+        "en": "Rested"
     },
     {
         "uid": 30,
         "id": "status-input-3",
         "property": "title",
-        "zh-TW": "遊覽",
-        "zh-CN": "游览",
-        "en": "Stoping for visiting"
+        "zh-TW": "遊覽：未過夜的較長時間停留",
+        "zh-CN": "游览：未过夜的较长时间停留",
+        "en": "Visited: stoped longer but without staying overnight"
     },
     {
         "uid": 31,
@@ -253,7 +253,7 @@
         "property": "innerHTML",
         "zh-TW": "遊覽",
         "zh-CN": "游览",
-        "en": "Stoping for visiting"
+        "en": "Visited"
     },
     {
         "uid": 32,
@@ -261,7 +261,7 @@
         "property": "title",
         "zh-TW": "住宿",
         "zh-CN": "住宿",
-        "en": "Stoping for accommodation"
+        "en": "Overnight"
     },
     {
         "uid": 33,
@@ -269,7 +269,7 @@
         "property": "innerHTML",
         "zh-TW": "住宿",
         "zh-CN": "住宿",
-        "en": "Stoping for accommodation"
+        "en": "Overnight"
     },
     {
         "uid": 34,
@@ -277,7 +277,7 @@
         "property": "title",
         "zh-TW": "居住",
         "zh-CN": "居住",
-        "en": "Living"
+        "en": "Lived"
     },
     {
         "uid": 35,
@@ -285,6 +285,6 @@
         "property": "innerHTML",
         "zh-TW": "居住",
         "zh-CN": "居住",
-        "en": "Living"
+        "en": "Lived"
     }
 ]

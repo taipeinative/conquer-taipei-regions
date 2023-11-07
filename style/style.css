@@ -300,8 +300,12 @@ strong {
     padding: .5em 1em;
 }
 .status-tab {
+    align-items: center;
     display: grid;
     grid-template-columns: 1.5em 1fr;
+}
+.status-tab input[type="radio"]{
+    margin: .7em .3em;
 }
 .status-tab-selection {
     color: var(--color-theme-main-tertiary-day);
@@ -380,7 +384,7 @@ strong {
 
 @media screen and (min-width: 250px) {
 
-    .status-tab {
+    body:not(.en) .status-tab {
         grid-template-columns: repeat(3, 1.5em 1fr);
     }
 }
@@ -410,6 +414,9 @@ strong {
     }
     body:not(.en) nav .nav-button:nth-of-type(n+4) {
         display: flex;
+    }
+    body.en .status-tab {
+        grid-template-columns: repeat(3, 1.5em 1fr);
     }
 }
 
@@ -441,7 +448,7 @@ strong {
     body:not(.en) nav .nav-button:nth-of-type(n+1) {
         display: flex;
     }
-    .status-tab {
+    body:not(.en) .status-tab {
         grid-template-columns: repeat(6, 1.5em 1fr);
     }
 }
@@ -452,6 +459,9 @@ strong {
         font-size: 1.5em;
         overflow: hidden;
         white-space: nowrap;
+    }
+    body.en .status-tab {
+        grid-template-columns: repeat(6, 1.5em 1fr);
     }
 
 }
@@ -477,8 +487,11 @@ strong {
         margin-right: .3em;
         width: calc(100% - .3em);
     }
-    .status-tab {
+    body:not(.en) .status-tab {
         grid-template-columns: repeat(2, 1.5em 1fr);
+    }
+    body.en .status-tab {
+        grid-template-columns: 1.5em 1fr;
     }
 }
 
@@ -487,7 +500,6 @@ strong {
     body.en nav {
         grid-template-columns: 1fr var(--nav-button-height);
     }
-
     body.en nav .nav-button:nth-of-type(n+4) {
         display: flex;
     }
@@ -506,7 +518,6 @@ strong {
     body.en nav {
         grid-template-columns: 1fr repeat(2, var(--nav-button-height));
     }
-
     body.en nav .nav-button:nth-of-type(n+3) {
         display: flex;
     }
@@ -518,9 +529,11 @@ strong {
     body.en nav {
         grid-template-columns: 1fr repeat(3, var(--nav-button-height));
     }
-
     body.en nav .nav-button:nth-of-type(n+2) {
         display: flex;
+    }
+    body.en .status-tab {
+        grid-template-columns: repeat(2, 1.5em 1fr);
     }
     
 }
@@ -530,7 +543,6 @@ strong {
     body.en nav {
         grid-template-columns: 1fr repeat(4, var(--nav-button-height));
     }
-
     body.en nav .nav-button:nth-of-type(n+1) {
         display: flex;
     }
@@ -546,7 +558,14 @@ strong {
 
 @media screen and (min-width: 900px) {
     
-    .status-tab {
+    body:not(.en) .status-tab {
+        grid-template-columns: repeat(3, 1.5em 1fr);
+    }
+}
+
+@media screen and (min-width: 1050px) {
+    
+    body.en .status-tab {
         grid-template-columns: repeat(3, 1.5em 1fr);
     }
 }
