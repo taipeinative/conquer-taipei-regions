@@ -1,6 +1,10 @@
+var dbFullName = [];
+var dbKeys = [];
+var dbValues = [];
 var dayTheme = true;
 var lang = 'zh-TW';
 var locale;
+var regLayer;
 
 window.onload = e => {
 
@@ -13,6 +17,23 @@ window.onload = e => {
 
 };
 
+var levels = {
+
+    0: '#FFF',      // Unvisited: white
+    1: '#5E6EDC',   // Passed: blue
+    2: '#1DAD4C',   // Rested: green
+    3: '#EED323',   // Visited: yellow
+    4: '#F99929',   // Overnight: orange
+    5: '#E21824'    // Lived: red
+
+};
+
+
+/**
+ * Fetch `geometry/regions.geojson`. In order to bypass CORS policy when testing locally,
+ *  use bash command `$ python -m http.server` to create a http enviroment.
+ *  Then visit `localhost:8000` to see how it works in real time.
+ */
 function fetchGeometry() {
 
     fetch('geometry/regions.geojson')
@@ -24,7 +45,7 @@ function fetchGeometry() {
         })
         .then(data => {
 
-            setMap(data);
+            lfControlMap(data);
 
         })
         .catch(err => {
@@ -36,9 +57,7 @@ function fetchGeometry() {
 }
 
 /**
- * Fetch `locale.json`. In order to bypass CORS policy when testing locally,
- *  use bash command `$ python -m http.server` to create a http enviroment.
- *  Then visit `localhost:8000` to see how it works in real time.
+ * Fetch `src/locale.json`.
  */
 function fetchLocale() {
 
@@ -87,22 +106,24 @@ function removeTab() {
     }
 }
 
-function setMap(region) {
+/**
+ * Control Leaflet's map interface.
+ */
+function lfControlMap(region) {
 
+
+    const buttons = document.querySelectorAll('.status-tab input');
+    const selection = document.getElementById('status-tab-1st-part');
     const osmURL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
     const osmAttribution = '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
     const osmLayer = L.tileLayer(osmURL, {attribution: osmAttribution, maxZoom: 18});
-
-    const map = leaflet.map('map').setView([25.05, 121.55], 12);
-    osmLayer.addTo(map);
-
+    const map = leaflet.map('map', {toggleStatus: true}).setView([25.05, 121.55], 12);
     var clicked;
-    var regLayer;
+
+    osmLayer.addTo(map);
 
     /**
      * The event listener for user events.
-     * @param {*} feature 
-     * @param {*} layer 
      */
     function lfEventListener(feature, layer) {
 
@@ -122,10 +143,33 @@ function setMap(region) {
     function lfEventClick(e) {
 
         var feature = e.target;
-        var sel;
+
+        if (clicked != null) {
+
+            clicked.setStyle({
+
+                color: '#888',
+                weight: 1
+
+            })
+        }
 
         clicked = feature;
-        regLayer.resetStyle();
+        currentLevel = Object.values(levels).indexOf(feature.options.fillColor);
+
+        // The event listeners to update input element status according to the feature. (leaflet to html)
+        buttons.forEach(item => {
+
+            if (item.id == `status-input-${currentLevel}`) {
+
+                item.checked = true;
+
+            } else {
+
+                item.checked = false;
+
+            }
+        })
 
         feature.setStyle({
 
@@ -135,15 +179,12 @@ function setMap(region) {
         });
 
         feature.bringToFront();
-
-        sel = document.getElementById('status-tab-1st-part');
-        sel.innerHTML = feature.feature.properties.fullName;
+        selection.innerHTML = feature.feature.properties.fullName;
 
     }
 
     /**
      * The actions which fire after the mouse hover the feature.
-     * @param {*} e The event.
      */
     function lfEventOn(e) {
 
@@ -170,17 +211,22 @@ function setMap(region) {
 
     /**
      * The actions which fire after the mouse hover out the feature.
-     * @param {*} e The event.
      */
-       function lfEventOut(e) {
+    function lfEventOut(e) {
         
-        if (clicked != e.target) {
+        var feature = e.target;
 
-            regLayer.resetStyle(e.target);
+        if (clicked != feature) {
 
+            feature.setStyle({
+
+                color: '#888',
+                weight: 1
+
+            });
         }
-
     }
+
     /**
     * Define polygons' style.
     */
@@ -194,11 +240,39 @@ function setMap(region) {
             weight: 1
 
         }
-
     }
 
-    regLayer = L.geoJson(region, {style: lfStyleGeneric, onEachFeature: lfEventListener}).addTo(map);
+    regLayer = L.geoJson(region, {style: lfStyleGeneric, onEachFeature: lfEventListener});
+    regLayer.addTo(map);
 
+    // Store the features information
+    Object.entries(regLayer._layers).forEach(item => {
+
+        dbKeys.push(item[0]);
+        dbValues.push(item[1].feature.properties);
+        dbFullName.push(item[1].feature.properties.fullName);
+
+    });
+
+    // The event listeners to change feature's background color into selected one. (html to leaflet)
+    buttons.forEach(item => {
+
+        item.addEventListener('click', e => {
+
+            uid = dbFullName.indexOf(selection.innerHTML);
+
+            if (uid != -1) {
+
+                feature = regLayer._layers[dbKeys[uid]];
+
+                feature.setStyle({
+
+                    fillColor: levels[item.value]
+
+                });
+            }
+        });
+    });
 }
 
 /**
